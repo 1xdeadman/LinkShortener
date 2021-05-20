@@ -1,0 +1,142 @@
+{
+    "resources": [
+        {
+            "rel": "home",
+            "href": "http://127.0.0.1:5000/"
+        },
+        {
+            "rel": "base_uri",
+            "href": "http://127.0.0.1:5000/api/"
+        },
+        {
+            "rel": "create_url",
+            "href": "create/",
+            "method": "POST",
+            "body": {
+                "type": "application/json",
+                "param_list": [
+                    {
+                        "name": "long_url",
+                        "type": "string",
+                        "description": "Адрес для сокращения"
+                    }
+                ]
+            },
+            "results": [
+                {
+                    "status": "success",
+                    "body": {
+                        "param_list": [
+                            {
+                                "name": "short",
+                                "type": "string",
+                                "description": "Сокращенный адрес"
+
+                            },
+                            {
+                                "name": "long",
+                                "type": "string",
+                                "description": "Сокращаемый адрес"
+                            }
+                        ]
+                    },
+                    "type": "application/json"
+                },
+                {
+                    "status": "failure",
+                    "body": {
+                        "param_list": [
+                            {
+                                "name": "code",
+                                "type": "string",
+                                "description": "Код ошибки"
+                            },
+                            {
+                                "name": "message",
+                                "type": "string",
+                                "description": "Описание ошибки"
+                            }
+                        ]
+                    },
+                    "type": "application/json"
+                }
+            ],
+            "error_types": [
+                {
+                    "code": "0",
+                    "message": "Неизвестная ошибка"
+                },
+                {
+                    "code": "1",
+                    "message": "Неправильные параметры запроса"
+                }
+            ],
+            "description": "Создать сокращенный адрес {short} для полного адреса {long}."
+        },
+        {
+            "rel": "remove_url",
+            "href": "remove/",
+            "method": "DELETE",
+            "body": {
+                "type": "application/json",
+                "param_list": [
+                    {
+                        "name": "short_url",
+                        "type": "string",
+                        "description": "Удаляемый адрес"
+                    }
+                ]
+            },
+            "results": [
+                {
+                    "status": "success",
+                    "type": "application/json",
+                    "body": {
+                        "param_list": [
+                            {
+                                "name": "short",
+                                "type": "string",
+                                "description": "Сокращенный адрес"
+
+                            },
+                            {
+                                "name": "long",
+                                "type": "string",
+                                "description": "Сокращаемый адрес"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "status": "failure",
+                    "type": "application/json",
+                    "body": {
+                        "param_list": [
+                            {
+                                "name": "code",
+                                "type": "string",
+                                "description": "Код ошибки"
+                            },
+                            {
+                                "name": "message",
+                                "type": "string",
+                                "description": "Описание ошибки"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "error_types": [
+                {
+                    "code": "0",
+                    "message": "Неизвестная ошибка"
+                },
+                {
+                    "code": "2",
+                    "message": "Не найден удаляемый url"
+                }
+            ],
+            "description": "Забыть сокращенный и привязанный к нему полный адрес"
+        }
+    ]
+}
