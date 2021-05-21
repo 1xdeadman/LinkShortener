@@ -4,3 +4,25 @@
 Для подключения к бд настройте в контейнере переменную окружения DB_URL, принимающую uri mongodb.
 
 Скрипт client_app обеспечивает взаимодействие пользователя с сервисом.
+
+
+
+POST запрос /api/create/ к сервису с телом:
+{
+    "long_url": "https://github.com/1xdeadman/LinkShortener"
+}
+вернет сокращенную ссылку на этот адрес:
+{
+    "status": "success",
+    "body": {
+        "short": "<schema>://<url>/urls/YKc0kDlpQTnX_i4Q",
+        "long": "https://github.com/1xdeadman/LinkShortener"
+    }
+}
+
+
+DELETE запрос /api/remove/ к сервису с телом:
+{
+    "short_url": "<schema>://<url>/urls/YKc0kDlpQTnX_i4Q"
+}
+удалит ссылку из сервиса и вернет:
