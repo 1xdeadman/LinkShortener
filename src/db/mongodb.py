@@ -26,7 +26,7 @@ def _get_urls() -> Collection:
 
 def add_new_url(long_url: str) -> Optional[bytes]:
     """
-    Добавляет новый адрес в базу
+    Добавить новый адрес в базу
 
     :param long_url: полный адрес
     :return: сокращенный адрес
