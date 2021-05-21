@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  api:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      DB_URL: "mongodb://mongo:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false"
+      DB_NAME: "delis_info"
+      DB_URL_COLLECTION: "urls"
+  mongo:
+    image: mongo
