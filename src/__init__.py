@@ -1,7 +1,6 @@
 from json import load
 from base64 import urlsafe_b64decode
 
-
 from flask import Flask, jsonify, redirect, abort
 
 from src.db import get_long_url

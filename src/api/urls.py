@@ -1,9 +1,9 @@
 from base64 import urlsafe_b64decode, urlsafe_b64encode
 from typing import Optional
 
+from flask import request
 
 from src.api import bp
-from flask import request
 from src import api_schema
 from src.db import get_long_url, add_new_url, remove_url_by_short_url
 from src.helpers import create_failure_response, create_url_response
