@@ -6,6 +6,7 @@ import click
 
 _api_schema = None
 actions = {}
+url = None
 
 
 def get_api_schema():
@@ -15,8 +16,11 @@ def get_api_schema():
     :return:
     """
     global _api_schema
+    global url
     if _api_schema is None:
-        res = requests.get('http://127.0.0.1:5000/')
+        if url is None:
+            url = input("Введите адрес сервиса [Пример: 'http://localhost:5000/']: ")  # 'http://localhost:5000/'
+        res = requests.get(url)
         if res.status_code == 200:
             _api_schema = res.json()
     return _api_schema
