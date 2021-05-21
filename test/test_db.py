@@ -1,10 +1,8 @@
 import pytest
 
-
 from flask import Flask
 from pymongo import MongoClient
 from pymongo.collection import Collection
-
 
 from src import create_app
 from src.db import add_new_url, remove_url_by_short_url, get_long_url

@@ -1,11 +1,9 @@
 from typing import Optional
 
-
 from pymongo import MongoClient
 from pymongo.database import Database
 from pymongo.collection import Collection
 from flask import current_app, g
-
 
 from src.helpers import create_url_entity
 
@@ -26,7 +24,7 @@ def _get_urls() -> Collection:
 
 def add_new_url(long_url: str) -> Optional[bytes]:
     """
-    Добавляет новый адрес в базу
+    Добавить новый адрес в базу
 
     :param long_url: полный адрес
     :return: сокращенный адрес

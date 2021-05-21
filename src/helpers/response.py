@@ -1,4 +1,3 @@
-
 class Status:
     FAILURE = "failure"
     SUCCESS = "success"

@@ -1,9 +1,9 @@
 from base64 import urlsafe_b64decode, urlsafe_b64encode
 from typing import Optional
 
+from flask import request
 
 from src.api import bp
-from flask import request
 from src import api_schema
 from src.db import get_long_url, add_new_url, remove_url_by_short_url
 from src.helpers import create_failure_response, create_url_response
@@ -11,6 +11,11 @@ from src.helpers import create_failure_response, create_url_response
 
 @bp.route('/create/', methods=["POST"])
 def create_short_url():
+    """
+    Обрабатывает запрос на создание новой сокращенной ссылки.
+
+    :return:
+    """
     if 'long_url' not in request.json:
         return create_failure_response(code="1", message="Неправильные параметры запроса")
 
@@ -28,6 +33,11 @@ def create_short_url():
 
 @bp.route('/remove/', methods=['DELETE'])
 def remove_url():
+    """
+    Обрабатывает запрос на удаление сокращенной ссылки.
+
+    :return:
+    """
     if 'short_url' not in request.json:
         return create_failure_response(code="1", message="Неправильные параметры запроса")
 
