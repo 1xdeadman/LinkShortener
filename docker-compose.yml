@@ -11,5 +11,4 @@ services:
       DB_URL_COLLECTION: "urls"
   mongo:
     image: mongo
-    restart: always
     command: --noscripting
