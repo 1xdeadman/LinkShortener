@@ -4,7 +4,7 @@ from flask import Flask
 from pymongo import MongoClient
 from pymongo.collection import Collection
 
-from src import create_app
+from src.app import create_app
 from src.db import add_new_url, remove_url_by_short_url, get_long_url
 
 
@@ -17,10 +17,10 @@ def app():
 @pytest.fixture(scope='function')
 def urls():
     client = MongoClient('mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&ssl=false')
-    collection = client['delis_info']['urls']
-    client.drop_database('delis_info')
+    client.drop_database('linkShortener')
+    collection = client['linkShortener']['urls']
     yield collection
-    client.drop_database('delis_info')
+    client.drop_database('linkShortener')
 
 
 @pytest.fixture
