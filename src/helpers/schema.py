@@ -22,7 +22,7 @@ class ApiSchema:
                 self._app.config['API_SCHEMA']['resources'][i][key] = value
 
     def create_schema(self):
-        self._app.config['API_SCHEMA'] = load(open('api_schema.json', 'r', encoding='utf-8'))
+        self._app.config['API_SCHEMA'] = load(open('src/api_schema.json', 'r', encoding='utf-8'))
 
         self.set_value('home', 'href', self._app.config.get('BASE_URL') or 'http://127.0.0.1:5000/')
         self.set_value('base_uri', 'href', self._app.config.get('BASE_URL') or 'http://127.0.0.1:5000/')
