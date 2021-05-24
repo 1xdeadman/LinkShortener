@@ -5,9 +5,9 @@ from flask import Flask, jsonify, redirect, abort
 
 from src.config import ProductionConfig as Config
 from src.db import get_long_url
+from src.helpers import ApiSchema
 
-
-api_schema = load(open('api_schema.json', 'r', encoding='utf-8'))
+apiSchema = ApiSchema()
 
 
 def create_app():
@@ -19,10 +19,12 @@ def create_app():
     app.register_blueprint(bp)
 
     import src.db
+    apiSchema.init_app(app)
+    apiSchema.create_schema()
 
     @app.route('/')
     def get():
-        response = jsonify(api_schema)
+        response = jsonify(app.config['API_SCHEMA'])
         response.content_type = "application/json; charset=utf-8"
         return response
 

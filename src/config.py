@@ -8,7 +8,8 @@ class ProductionConfig(Config):
     DB_NAME: str = os.environ.get('DB_NAME') or "linkShortener"
     DB_URL_COLLECTION: str = os.environ.get('DB_URL_COLLECTION') or "urls"
     DB_CERT_PATH: str = ""
-
+    BASE_PATH: str = os.environ.get('DB_URL_COLLECTION') or "urls"
+    API_SCHEMA: dict = dict()
     JSON_AS_ASCII: bool = False
 
 
