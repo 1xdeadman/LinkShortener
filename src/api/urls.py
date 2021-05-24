@@ -1,12 +1,11 @@
 from base64 import urlsafe_b64decode, urlsafe_b64encode
 from typing import Optional
 
-from flask import request
+from flask import request, current_app
 
 from src.api import bp
-from src.app import apiSchema
 from src.db import get_long_url, add_new_url, remove_url_by_short_url
-from src.helpers import create_failure_response, create_url_response
+from src.helpers import create_failure_response, create_url_response, find_url
 
 
 @bp.route('/create/', methods=["POST"])
@@ -26,8 +25,10 @@ def create_short_url():
         return create_failure_response(code="0", message="Неизвестная ошибка")
 
     short_number = urlsafe_b64encode(tmp).decode(encoding='utf-8')
+    short = "{0}urls/{1}".format(find_url(current_app, 'home'), short_number)
+    print("short:", short)
     return create_url_response(
-        short="{0}urls/{1}".format(apiSchema.find_url('home'), short_number),
+        short= short,
         long=long_url)
 
 
